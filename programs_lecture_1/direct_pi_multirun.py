@@ -10,5 +10,14 @@ def direct_pi(N):
  
 n_runs = 1000
 n_trials = 4000
+
+# guardar el valor de pi en cada corrida
+pi_vector = []
 for run in range(n_runs):
-    print 4.0 * direct_pi(n_trials) / float(n_trials)
+    pi_k = 4.0 * direct_pi(n_trials) / float(n_trials)
+    print(run, pi_k)
+    pi_vector.append(pi_k)
+
+# guardar el valor promedio de pi
+pi_mean = sum(pi_vector) / float(n_runs)    
+print("Promedio de pi: ", pi_mean)
