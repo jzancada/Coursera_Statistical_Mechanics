@@ -24,11 +24,11 @@ y = [yvec[k] for k in list_vec]
 
 plt.xticks([])
 plt.yticks([])
-H, xedges, yedges = np.histogram2d(x, y, bins=(3, 3), 
-           range=[[1,3],[1,3]], normed=True)
-print H
+H, xedges, yedges = np.histogram2d(x, y, bins=(3, 3),
+           range=[[1,3],[1,3]], density=True)
+print (H)
 H /= np.sum(H)
-print H
+print (H)
 extent = [yedges[0], yedges[-1], xedges[-1], xedges[0]]
 plt.imshow(H, extent=extent, interpolation='nearest', vmin=0.0, vmax=1.0)
 plt.set_cmap('hot')

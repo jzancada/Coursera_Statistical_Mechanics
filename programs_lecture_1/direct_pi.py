@@ -1,9 +1,20 @@
-import random
+import random, math
 
-n_trials = 4000
+n_trials = 4000000
 n_hits = 0
+var = 0.0
+obs_mean = 0.0
+obs2_mean = 0.0
 for iter in range(n_trials):
     x, y = random.uniform(-1.0, 1.0), random.uniform(-1.0, 1.0)
+    Obs = 0.0
     if x**2 + y**2 < 1.0: 
         n_hits += 1
-print (4.0 * n_hits / float(n_trials))
+        Obs = 4.0
+        obs_mean += Obs
+        obs2_mean += Obs**2
+    var += (Obs - math.pi)**2
+print (4.0 * n_hits / float(n_trials), math.sqrt(var / float(n_trials)))
+print("obs_mean ", obs_mean/n_trials)
+print("obs2_mean ", obs2_mean/n_trials) 
+print("var ", math.sqrt(obs2_mean/n_trials - (obs_mean/n_trials)**2 ))
